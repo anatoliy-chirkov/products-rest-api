@@ -1,7 +1,7 @@
 FROM php:7.3-fpm-buster
 
 RUN apt-get -y update
-RUN apt-get -y install curl
+RUN apt-get -y install git curl
 
 RUN docker-php-ext-install -j$(nproc) opcache mysqli pdo_mysql
 
