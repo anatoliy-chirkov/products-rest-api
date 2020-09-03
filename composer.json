@@ -1,0 +1,11 @@
+{
+    "name": "anatoliy-chirkov/products-rest-api",
+    "type": "project",
+    "authors": [
+        {
+            "name": "Anatoliy Chirkov",
+            "email": "chirkoff.ab@gmail.com"
+        }
+    ],
+    "require": {}
+}
