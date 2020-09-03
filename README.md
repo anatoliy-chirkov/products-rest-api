@@ -8,6 +8,14 @@ PHP 7.3 Slim framework
 ```
 docker-compose up -d
 ```
+4. Если проект запускается первый раз, зайти в контейнер и завершить установку
+```
+docker exec -ti php bash
+```
+```
+composer install
+./vendor/bin/phpmig migrate
+```
 
 ### Остановка
 Выполнить команду, в корне проекта
