@@ -9,7 +9,7 @@ class CreateCategoryAction extends CategoryAction
 {
     protected function action(): Response
     {
-        $category = $this->categoryRepository->create([]);
+        $category = $this->categoryRepository->create($this->getFormData());
 
         return $this->respond($category, 201);
     }

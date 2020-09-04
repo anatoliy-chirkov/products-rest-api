@@ -2,9 +2,10 @@
 
 namespace ProductsApi\Domain\Category;
 
-use ProductsApi\Domain\IRepository;
+use ProductsApi\Domain\ICreateUpdateRepository;
 
-interface ICategoryRepository extends IRepository
+interface ICategoryRepository extends ICreateUpdateRepository
 {
-    public function takeMany(int $page = 1, int $count = 15);
+    public function takeMany(?int $parentId = null, ?bool $visible = null, int $productsMinRemnant = 0, int $page = 1, int $perPage = 15);
+    public function delete(int $id, bool $deleteChildren = true, bool $deleteProducts = true);
 }

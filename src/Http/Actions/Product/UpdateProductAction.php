@@ -9,7 +9,10 @@ class UpdateProductAction extends ProductAction
 {
     protected function action(): Response
     {
-        $product = $this->productRepository->update([]);
+        $product = $this->productRepository->update(
+            $this->resolveArg('id'),
+            $this->getFormData()
+        );
 
         return $this->respond($product);
     }

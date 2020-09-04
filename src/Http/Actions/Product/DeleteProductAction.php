@@ -9,7 +9,7 @@ class DeleteProductAction extends ProductAction
 {
     protected function action(): Response
     {
-        $this->productRepository->delete([]);
+        $this->productRepository->delete($this->resolveArg('id'));
 
         return $this->respond(null, 204);
     }

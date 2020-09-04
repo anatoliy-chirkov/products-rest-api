@@ -9,7 +9,10 @@ class UpdateCategoryAction extends CategoryAction
 {
     protected function action(): Response
     {
-        $category = $this->categoryRepository->update([]);
+        $category = $this->categoryRepository->update(
+            $this->resolveArg('id'),
+            $this->getFormData()
+        );
 
         return $this->respond($category);
     }

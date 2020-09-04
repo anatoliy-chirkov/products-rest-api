@@ -9,7 +9,7 @@ class CreateProductAction extends ProductAction
 {
     protected function action(): Response
     {
-        $product = $this->productRepository->create([]);
+        $product = $this->productRepository->create($this->getFormData());
 
         return $this->respond($product, 201);
     }

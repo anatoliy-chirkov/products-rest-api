@@ -9,7 +9,11 @@ class DeleteCategoryAction extends CategoryAction
 {
     protected function action(): Response
     {
-        $this->categoryRepository->delete();
+        $this->categoryRepository->delete(
+            $this->resolveArg('id'),
+            $_GET['delet_children'],
+            $_GET['delete_products']
+        );
 
         return $this->respond(null, 204);
     }

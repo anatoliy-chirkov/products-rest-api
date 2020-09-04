@@ -1,6 +1,6 @@
 <?php
 
-namespace ProductsApi\Http\Actions\Category;
+namespace ProductsApi\Http\Actions\Product;
 
 use ProductsApi\Http\Actions\Action;
 use Psr\Http\Message\ResponseInterface as Response;
