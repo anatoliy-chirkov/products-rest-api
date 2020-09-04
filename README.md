@@ -27,16 +27,28 @@ docker-compose down
 
 ## API
 
+### Example of common error response
+```
+Code: 500
+Body: {
+  "status": "error",
+  "error": {
+    "type": "SERVER_ERROR",
+    "description": "Example error"
+  }
+}
+```
+
 ### Categories
 
 #### GET /categories
 ```
-Parameters: parent_id (int, optional), products_min_remnant (int, optional, default 0), visible (bool, optional)
+Parameters: parent_id (int, optional), products_min_remnant (int, optional, default 0), visible (bool, optional), page (int, optional, default 1), per_page (int, optional, default 15)
 
 Success Response:
   Code: 200
   Body: {
-    "status_code": 200,
+    "status": "ok",
     "data": {
       "items": [
         {
@@ -62,7 +74,7 @@ Body JSON: name (string), parent_id (int, optional, default null), visible (bool
 Success Response:
   Code: 201
   Body: {
-    "status_code": 201,
+    "status": "ok",
     "data": {
       "id": 1,
       "name": "Example category",
@@ -80,7 +92,7 @@ Body JSON: name (string), parent_id (int), visible (bool)
 Success Response:
   Code: 200
   Body: {
-    "status_code": 200,
+    "status": "ok",
     "data": {
       "id": 1,
       "name": "Example category",
@@ -104,12 +116,12 @@ Success Response:
 
 #### GET /products
 ```
-Parameters: name (string, optional), categories_ids (array of int, optional), min_remnant (int, optional, default 0)
+Parameters: name (string, optional), categories_ids (array of int, optional), min_remnant (int, optional, default 0), page (int, optional, default 1), per_page (int, optional, default 15)
 
 Success Response:
   Code: 200
   Body: {
-    "status_code": 200,
+    "status": "ok",
     "data": {
       "items": [
         {
@@ -142,7 +154,7 @@ Body JSON: name (string), categories_ids (array of int), price (float), remnant 
 Success Response:
   Code: 201
   Body: {
-    "status_code": 201,
+    "status": "ok",
     "data": {
       "id": 1,
       "name": "Example product",
@@ -168,7 +180,7 @@ Body JSON: name (string), categories_ids (array of int), price (float), remnant 
 Success Response:
   Code: 200
   Body: {
-    "status_code": 200,
+    "status": "ok",
     "data": {
       "id": 1,
       "name": "Example product",

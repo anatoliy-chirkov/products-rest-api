@@ -66,10 +66,14 @@ class ActionPayload implements JsonSerializable
     public function jsonSerialize()
     {
         $payload = [
-            'status_code' => $this->statusCode,
-            'data' => $this->data,
-            'error' => $this->error,
+            'status' => $this->statusCode >= 400 ? 'error' : 'ok',
         ];
+
+        if ($this->data !== null) {
+            $payload['data'] = $this->data;
+        } elseif ($this->error !== null) {
+            $payload['error'] = $this->error;
+        }
 
         return $payload;
     }
