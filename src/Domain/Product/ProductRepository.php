@@ -8,6 +8,7 @@ use ProductsApi\Domain\RecordNotFoundException;
 
 class ProductRepository implements IProductRepository
 {
+    // TODO: need to reduce params count, e.g. put to object with name SearchForm
     public function takeMany(?string $nameQuery = null, ?array $categoriesIds = null, int $minRemnant = 0, int $page = 1, int $perPage = 15)
     {
         $productQuery = Product::query()->select(['products.*'])->with('categories');

@@ -11,6 +11,7 @@ class TakeManyProductsAction extends ProductAction
 
     protected function action(): Response
     {
+        // TODO: add validation
         $products = $this->productRepository->takeMany(
             $_GET['name'] ?? null
             $_GET['categories_ids'] ?? null,

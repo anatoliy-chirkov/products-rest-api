@@ -11,6 +11,7 @@ class TakeManyCategoriesAction extends CategoryAction
 
     protected function action(): Response
     {
+        // TODO: add validation
         $categories = $this->categoryRepository->takeMany(
             $_GET['parent_id'] ?? null,
             $_GET['visible'] ?? null,

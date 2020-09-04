@@ -9,6 +9,7 @@ class UpdateCategoryAction extends CategoryAction
 {
     protected function action(): Response
     {
+        // TODO: add validation; specify passed data, e.g. by class UpdateForm
         $category = $this->categoryRepository->update(
             $this->resolveArg('id'),
             $this->getFormData()

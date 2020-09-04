@@ -9,6 +9,7 @@ class DeleteCategoryAction extends CategoryAction
 {
     protected function action(): Response
     {
+        // TODO: add validation
         $this->categoryRepository->delete(
             $this->resolveArg('id'),
             $_GET['delete_children'] ?? true,

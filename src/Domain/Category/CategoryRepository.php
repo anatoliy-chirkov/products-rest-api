@@ -7,6 +7,7 @@ use ProductsApi\Domain\RecordNotFoundException;
 
 class CategoryRepository implements ICategoryRepository
 {
+    // TODO: need to reduce params count, e.g. put to object with name SearchForm
     public function takeMany(?int $parentId = null, ?bool $visible = null, int $productsMinRemnant = 0, int $page = 1, int $perPage = 15)
     {
         $categoryQuery = Category::query()->withCount('children');

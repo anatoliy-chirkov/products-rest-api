@@ -9,6 +9,7 @@ class UpdateProductAction extends ProductAction
 {
     protected function action(): Response
     {
+        // TODO: add validation; specify passed data, e.g. by class UpdateForm
         $product = $this->productRepository->update(
             $this->resolveArg('id'),
             $this->getFormData()

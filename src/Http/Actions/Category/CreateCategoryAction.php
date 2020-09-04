@@ -9,6 +9,7 @@ class CreateCategoryAction extends CategoryAction
 {
     protected function action(): Response
     {
+        // TODO: add validation; specify passed data, e.g. by class CreateForm
         $category = $this->categoryRepository->create($this->getFormData());
 
         return $this->respond($category, 201);

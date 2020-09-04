@@ -1,7 +1,7 @@
 # REST API Каталог товаров
 PHP 7.3 Slim framework
 
-TODO:
+## TODO:
 - Валидация входящих данных, можно использовать illuminate/validation
 - Интеграционные тесты
 - Данные для тестового заполнения (seeds)
@@ -10,7 +10,7 @@ TODO:
 
 ### Запуск
 1. Установить [Docker](https://docs.docker.com/get-docker/) и [Docker-compose](https://docs.docker.com/compose/install/)
-2. Скопировать .env.example в .env, можно изменить внешний порт "EXTERNAL_PORT" и название проекта, оно же является именем БД: "COMPOSE_PROJECT_NAME"
+2. Скопировать .env.example в .env, можно изменить внешний порт "EXTERNAL_PORT", название проекта, оно же является именем БД: "COMPOSE_PROJECT_NAME", и частично настроить CORS через "ACCESS_CONTROL_ALLOW_ORIGIN"
 3. Выполнить команду, в корне проекта
 ```
 docker-compose up -d
