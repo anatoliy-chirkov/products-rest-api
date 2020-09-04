@@ -12,6 +12,7 @@ class TakeManyProductsAction extends ProductAction
     protected function action(): Response
     {
         $products = $this->productRepository->takeMany(
+            $_GET['name'] ?? null
             $_GET['categories_ids'] ?? null,
             $_GET['min_remnant'] ?? 0,
             $_GET['page'] ?? 1,

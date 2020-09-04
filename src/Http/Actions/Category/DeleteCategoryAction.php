@@ -11,8 +11,8 @@ class DeleteCategoryAction extends CategoryAction
     {
         $this->categoryRepository->delete(
             $this->resolveArg('id'),
-            $_GET['delet_children'],
-            $_GET['delete_products']
+            $_GET['delete_children'] ?? true,
+            $_GET['delete_products'] ?? true
         );
 
         return $this->respond(null, 204);

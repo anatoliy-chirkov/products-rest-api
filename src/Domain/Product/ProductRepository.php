@@ -7,9 +7,13 @@ use ProductsApi\Domain\CategoryProduct;
 
 class ProductRepository implements IProductRepository
 {
-    public function takeMany(?array $categoriesIds = null, int $minRemnant = 0, int $page = 1, int $perPage = 15)
+    public function takeMany(?string $nameQuery = null, ?array $categoriesIds = null, int $minRemnant = 0, int $page = 1, int $perPage = 15)
     {
         $productQuery = Product::query()->select(['products.*'])->with('categories');
+
+        if ($nameQuery !== null) {
+            $productQuery->where('name', 'like', "%{$nameQuery}%");
+        }
 
         if ($categoriesIds !== null) {
             $categoriesIdsWithNested = [];

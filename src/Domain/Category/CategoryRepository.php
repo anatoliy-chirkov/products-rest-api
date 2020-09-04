@@ -83,23 +83,22 @@ class CategoryRepository implements ICategoryRepository
         $category = Category::query()->find($id);
 
         if ($deleteProducts) {
-            $category->products->delete();
+            $category->products()->delete();
         }
 
         if ($deleteChildren) {
             $nestedIdsScope = new NestedIdsScope($id);
-            $categoryWithChildren = Category::query()
+            $categoryWithChildrenQuery = Category::query()
                 ->whereIn('id', $nestedIdsScope->makeWithChildren())
-                ->get()
             ;
 
             if ($deleteProducts) {
-                foreach ($categoryWithChildren as $category) {
-                    $category->products->delete();
+                foreach ($categoryWithChildrenQuery->get() as $category) {
+                    $category->products()->delete();
                 }
             }
 
-            $categoryWithChildren->delete();
+            $categoryWithChildrenQuery->delete();
         } else {
             $category->delete();
         }

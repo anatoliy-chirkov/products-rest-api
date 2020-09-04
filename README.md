@@ -31,7 +31,7 @@ docker-compose down
 
 #### GET /categories
 ```
-Parameters: parent_id (int, optional), products_min_remnant (int, optional), visible (bool, optional)
+Parameters: parent_id (int, optional), products_min_remnant (int, optional, default 0), visible (bool, optional)
 
 Success Response:
   Code: 200
@@ -57,7 +57,7 @@ Success Response:
 
 #### POST /categories
 ```
-Body JSON: name (string), parent_id (int, optional), visible (bool, optional, default true)
+Body JSON: name (string), parent_id (int, optional, default null), visible (bool, optional, default true)
 
 Success Response:
   Code: 201
@@ -104,7 +104,7 @@ Success Response:
 
 #### GET /products
 ```
-Parameters: parent_id (int, optional), products_min_remnant (int, optional), visible (bool, optional)
+Parameters: name (string, optional), categories_ids (array of int, optional), min_remnant (int, optional, default 0)
 
 Success Response:
   Code: 200
@@ -137,7 +137,7 @@ Success Response:
 
 #### POST /products
 ```
-Body JSON: name (string), categories_ids (array of int), price (float), remnant (int, optional, default: 0)
+Body JSON: name (string), categories_ids (array of int), price (float), remnant (int, optional, default 0)
 
 Success Response:
   Code: 201
