@@ -4,6 +4,7 @@ namespace ProductsApi\Domain\Product;
 
 use ProductsApi\Domain\Category\NestedIdsScope as CategoryNestedIdsScope;
 use ProductsApi\Domain\CategoryProduct;
+use ProductsApi\Domain\RecordNotFoundException;
 
 class ProductRepository implements IProductRepository
 {
@@ -78,6 +79,10 @@ class ProductRepository implements IProductRepository
     {
         $product = Product::query()->find($id);
 
+        if ($product === null) {
+            throw new RecordNotFoundException();
+        }
+
         $product->update([
             'name' => $data['name'],
             'price' => $data['price'],
@@ -109,6 +114,11 @@ class ProductRepository implements IProductRepository
     public function delete(int $id)
     {
         $product = Product::query()->find($id);
+
+        if ($product === null) {
+            throw new RecordNotFoundException();
+        }
+
         $product->delete();
     }
 }

@@ -6,6 +6,8 @@ use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Exception\HttpBadRequestException;
 use Slim\Exception\HttpInternalServerErrorException;
+use Slim\Exception\HttpNotFoundException;
+use ProductsApi\Domain\RecordNotFoundException;
 
 abstract class Action
 {
@@ -40,6 +42,8 @@ abstract class Action
 
         try {
             return $this->action();
+        } catch (RecordNotFoundException $e) {
+            throw new HttpNotFoundException($this->request, $e->getMessage());
         } catch (\Exception $e) {
             throw new HttpInternalServerErrorException($this->request, $e->getMessage());
         }

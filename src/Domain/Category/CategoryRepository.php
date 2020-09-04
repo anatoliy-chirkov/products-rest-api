@@ -3,6 +3,7 @@
 namespace ProductsApi\Domain\Category;
 
 use ProductsApi\Domain\CategoryProduct;
+use ProductsApi\Domain\RecordNotFoundException;
 
 class CategoryRepository implements ICategoryRepository
 {
@@ -69,7 +70,13 @@ class CategoryRepository implements ICategoryRepository
 
     public function update(int $id, array $data)
     {
-        $category = Category::query()->find($id)->update([
+        $category = Category::query()->find($id);
+
+        if ($category === null) {
+            throw new RecordNotFoundException();
+        }
+
+        $category->update([
             'name' => $data['name'],
             'parent_id' => $data['parent_id'],
             'visible' => $data['visible'],
@@ -81,6 +88,10 @@ class CategoryRepository implements ICategoryRepository
     public function delete(int $id, bool $deleteChildren = true, bool $deleteProducts = true)
     {
         $category = Category::query()->find($id);
+
+        if ($category === null) {
+            throw new RecordNotFoundException();
+        }
 
         if ($deleteProducts) {
             $category->products()->delete();
