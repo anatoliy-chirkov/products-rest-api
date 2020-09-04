@@ -11,8 +11,8 @@ use ProductsApi\Application;
 Application::init()
     ->setupDotEnv()
     ->setupDatabase()
+    ->setupHttpRoutes()
     ->setupHttpRequest()
     ->setupHttpErrorHandler()
-    ->setupHttpRoutes()
     ->run()
 ;
